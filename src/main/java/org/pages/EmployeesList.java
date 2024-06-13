@@ -23,15 +23,6 @@ public class EmployeesList {
 
        employeesList = employeeService.getAllEmployees();
 
-//        employeesList = new ArrayList<>();
-//        employee =  new Employee(1, "Ankit", 35, "Mishra", "Mumbai");
-//        employeesList.add(employee);
-//        employee = new Employee(2, "Aishwarya", 30, "Verma", "Gurgaon");
-//        employeesList.add(employee);
-//        employee = new Employee(3, "Nandini", 40, "Daksh", "Noida");
-//        employeesList.add(employee);
-//        employee = new Employee(4, "Urvashi", 25, "Singh", "Delhi");
-//        employeesList.add(employee);
     }
 
    public Employee getEmployeeById(int empId){
