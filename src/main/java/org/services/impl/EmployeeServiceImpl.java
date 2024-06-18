@@ -14,10 +14,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeList = Arrays.asList(
                 new Employee(1, "Ankit", 35, "Mishra", "Mumbai"),
                 new Employee(2, "Aishwarya", 30, "Verma", "Gurgaon"),
-                new Employee(3, "Nandini", 40, "Daksh", "Noida"),
-                new Employee(4, "Urvashi", 25, "Singh", "Delhi")
-
+                new Employee(3, "Sadaf", 25, "Khan", "Lucknow"),
+                new Employee(4, "Urvashi", 29, "Singh", "Delhi"),
+                new Employee(5, "Nausheen", 26, "Anwar", "Delhi"),
+                new Employee(6,  "Nandini", 40, "Daksh", "Noida"),
+                new Employee(7, "Avinash", 31, "Singh", "Jaipur")
         );
+
+//    this.employeeList.add(new Employee(1, "Ankit", 35, "Mishra", "Mumbai"));
+//        this.employeeList.add(new Employee(2, "Aishwarya", 30, "Verma", "Gurgaon"));
+//                this.employeeList.add(new Employee(3, "Nandini", 40, "Daksh", "Noida"));
+//                        this.employeeList.add(new Employee(4, "Urvashi", 25, "Singh", "Delhi"));
     }
 
     @Override
@@ -43,5 +50,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getAllEmployees() {
         return employeeList;
+    }
+
+    @Override
+    public void addEmp(int empId, String name, int age, String address, String password) {
+        try {
+            this.employeeList.add(new Employee(empId, name, age, address, password));
+            System.out.println(employeeList);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

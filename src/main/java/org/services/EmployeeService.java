@@ -10,4 +10,6 @@ public interface EmployeeService {
      Employee getEmployeeByUserName(String username);
 
      List<Employee> getAllEmployees();
+
+     void addEmp(int empId, String name, int age, String address, String password);
 }

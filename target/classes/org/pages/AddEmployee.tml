@@ -1,0 +1,101 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter"
+      title="Add Employee | EMS">
+<head>
+    <style>
+.employee-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 2px solid #ccc;
+      padding: 20px;
+      border-radius: 7px;
+      max-width: 1000px;
+      margin: auto;
+      box-sizing: border-box;
+      box-shadow: 5px 10px #888888;
+      margin-top: 50px;
+  }
+
+.details{
+    flex:1;
+    width: 80%;
+    align-content: center;
+}
+
+.item{
+     margin-bottom: 15px;
+     text-align: left;
+     font-size: 15px;
+}
+
+ t:submit {
+        background-color: ##66c337;
+        color: white;
+         padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    t:submit:hover {
+        background-color: #377019;
+    }
+
+    h1{
+        text-align:center;
+        font-size: bold;
+        margin-top: 0;
+    }
+
+    </style>
+</head>
+<body class="container" style="background-color:#CF978B;">
+<div>
+    <h1><i><strong>Add New Employee </strong> </i></h1>
+</div>
+
+<div class="employee-container">
+    <div class="details">
+        <t:form t:id="addEmployeeForm">
+            <div class="item form-group">
+                <label for="empid">Employee ID : </label>
+                <t:textfield t:id="employeeID" value="empId"/>
+            </div>
+            <div class="item form-group">
+                <label for="name">Name : </label>
+                <t:textfield t:id="Name" value="name"/>
+            </div>
+            <div class="item form-group">
+                <label for="age">Age : </label>
+                <t:textfield t:id="Age" value="age"/>
+            </div>
+            <div class="item form-group">
+                <label for="address">Address : </label>
+                <t:textfield t:id="Address" value="address"/>
+            </div>
+            <div class="item form-group">
+                <label for="password">Password : </label>
+                <t:textfield t:id="Password" type="password" value="password"/>
+            </div>
+            <div class="item form-group">
+                <label for="retypePassword">Re-type Password : </label>
+                <t:textfield t:id="retypePassword" type="password" value="retypePassword"/>
+            </div>
+
+            <div class="error">
+                <t:errors />
+            </div>
+
+            <div class="btn btn-lg btn-block">
+            <t:submit value="Add Employee"/>
+            </div>
+
+        </t:form>
+    </div>
+
+</div>
+</body>
+
+</html>

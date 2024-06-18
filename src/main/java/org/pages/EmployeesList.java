@@ -20,13 +20,10 @@ public class EmployeesList {
     EmployeeService employeeService;
 
     void setupRender() {
-
-       employeesList = employeeService.getAllEmployees();
-
+       this.employeesList = employeeService.getAllEmployees();
     }
 
    public Employee getEmployeeById(int empId){
-
         return employeeService.getEmployeeById(empId);
     }
 
