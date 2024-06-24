@@ -61,7 +61,7 @@
         <t:form t:id="addEmployeeForm">
             <div class="item form-group">
                 <label for="empid">Employee ID : </label>
-                <t:textfield t:id="employeeID" value="empId"/>
+                <t:textfield t:id="employeeID" t:type="number" value="empId"/>
             </div>
             <div class="item form-group">
                 <label for="name">Name : </label>
@@ -69,7 +69,7 @@
             </div>
             <div class="item form-group">
                 <label for="age">Age : </label>
-                <t:textfield t:id="Age" value="age"/>
+                <t:textfield t:id="Age" t:type="number" value="age"/>
             </div>
             <div class="item form-group">
                 <label for="address">Address : </label>
@@ -77,11 +77,11 @@
             </div>
             <div class="item form-group">
                 <label for="password">Password : </label>
-                <t:textfield t:id="Password" type="password" value="password"/>
+                <t:passwordfield t:id="Password" value="password"/>
             </div>
             <div class="item form-group">
                 <label for="retypePassword">Re-type Password : </label>
-                <t:textfield t:id="retypePassword" type="password" value="retypePassword"/>
+                <t:passwordfield t:id="retypePassword" value="retypePassword"/>
             </div>
 
             <div class="error">

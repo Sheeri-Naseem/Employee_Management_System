@@ -1,13 +1,12 @@
 package org.pages;
 
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.services.EmployeeService;
-
-import javax.inject.Inject;
-import java.text.Normalizer;
 
 public class AddEmployee {
 
@@ -41,6 +40,9 @@ public class AddEmployee {
     @Inject
     private EmployeeService employeeService;
 
+    @InjectPage
+    private EmployeesList employeesList;
+
     void onValidateFromAddEmployeeForm() {
 
         if (empid == 0 || name.isEmpty() || age == 0  ||  address.isEmpty() || password.isEmpty() || retypePassword.isEmpty()) {
@@ -57,14 +59,14 @@ public class AddEmployee {
     }
 
     Object onSuccess() {
-        System.out.println(empid + " " + name + " " + age + " " + address + " " + " " + password);
+        System.out.println(empid + " " + name + " " + age + " " + address + " " + " " + password+ " "+retypePassword);
         System.out.println("Successfully added");
 
         //call add employee service method
 //        employeeService.addEmp(empid, name, age, address, password);
 
         //return to emp list page
-        return EmployeesList.class;
+        return employeesList;
     }
 
 }

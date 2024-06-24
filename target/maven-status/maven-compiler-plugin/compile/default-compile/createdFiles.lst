@@ -1,9 +1,11 @@
 org\pages\EmployeesList.class
+org\dao\EmployeeDao.class
 org\entities\Employee.class
+org\services\LoginService.class
+org\services\impl\EmployeeServiceImpl.class
 org\pages\EmployeeDetails.class
 org\components\Header.class
 org\pages\AddEmployee.class
 org\services\EmployeeService.class
 org\services\impl\LoginServiceImpl.class
-org\services\LoginService.class
-org\services\impl\EmployeeServiceImpl.class
+org\dao\impl\EmployeeDaoImpl.class

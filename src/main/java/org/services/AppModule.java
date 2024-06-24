@@ -4,18 +4,17 @@ import org.apache.tapestry5.SymbolConstants;
 
 import org.apache.tapestry5.commons.MappedConfiguration;
 import org.apache.tapestry5.commons.OrderedConfiguration;
-import org.apache.tapestry5.http.services.Request;
-import org.apache.tapestry5.http.services.RequestFilter;
-import org.apache.tapestry5.http.services.RequestHandler;
-import org.apache.tapestry5.http.services.Response;
+import org.apache.tapestry5.http.services.*;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
+//import org.apache.tapestry5.spring.SpringConstants;
 import org.services.impl.EmployeeServiceImpl;
 import org.services.impl.LoginServiceImpl;
 import org.slf4j.Logger;
+//import org.springframework.context.ApplicationContext;
 
 import java.io.IOException;
 
@@ -24,10 +23,6 @@ public class AppModule {
     {
         binder.bind(EmployeeService.class, EmployeeServiceImpl.class);
         binder.bind(LoginService.class, LoginServiceImpl.class);
-//        .withId("EmployeeServiceImpl")
-//        withId("LoginServiceImpl");
-
-//        binder.bind(EmpService.class, EmpServiceImpl.class);
 
         // Make bind() calls on the binder object to define most IoC services.
         // Use service builder methods (example below) when the implementation
@@ -142,4 +137,9 @@ public class AppModule {
 
         configuration.add("Timing", filter);
     }
+
+//    @Contribute(ApplicationGlobals.class)
+//    public static void provideApplicationGlobals(ApplicationContext applicationContext, ApplicationGlobals globals) {
+//        globals.store(SpringConstants.CONTEXT, applicationContext);
+//    }
 }

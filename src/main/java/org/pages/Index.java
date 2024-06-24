@@ -1,15 +1,21 @@
 package org.pages;
 
 import org.apache.tapestry5.alerts.AlertManager;
-import org.apache.tapestry5.annotations.*;
+//import org.apache.tapestry5.annotations.*;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
+import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.PasswordField;
 //import org.components.Header;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.entities.Employee;
 import org.services.LoginService;
 
-import javax.inject.Inject;
 
 
 public class Index {
@@ -31,11 +37,15 @@ public class Index {
     @InjectComponent("password")
     private PasswordField passwordField;
 
-    @Component
+    @InjectComponent
     private Form loginForm;
 
     @Inject
     private LoginService loginService;
+
+    @InjectPage
+    private EmployeesList employeesList;
+
 
 //    @Component
 //    private Header header;
@@ -44,14 +54,15 @@ public class Index {
     void onValidateFromLoginForm(){
 
         if(!loginService.isValid(username,password)){
-            loginForm.recordError(passwordField,"Invalid username or password !");
+            alertManager.alert(Duration.UNTIL_DISMISSED, Severity.ERROR,"Invalid username or password! Try Again.");
+            loginForm.recordError("Invalid username or password !");
         }
     }
 
     Object onSuccess(){
         System.out.println("Login Successful");
         alertManager.success("Welcome back "+username + " !");
-        return EmployeesList.class;
+        return employeesList;
     }
 
 

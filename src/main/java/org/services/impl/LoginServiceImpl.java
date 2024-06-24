@@ -3,10 +3,12 @@ package org.services.impl;
 import org.entities.Employee;
 import org.services.EmployeeService;
 import org.services.LoginService;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.List;
 
+@Service
 public class LoginServiceImpl implements LoginService {
 
     @Inject

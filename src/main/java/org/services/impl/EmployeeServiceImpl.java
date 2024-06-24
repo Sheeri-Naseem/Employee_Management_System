@@ -2,10 +2,12 @@ package org.services.impl;
 
 import org.entities.Employee;
 import org.services.EmployeeService;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private List<Employee> employeeList;

@@ -12,8 +12,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <tapestry-release-version>5.8.6</tapestry-release-version>
+        <tapestry-release-version>5.8.4</tapestry-release-version>
         <spring-release-version>4.3.3.RELEASE</spring-release-version>
+<!--        <hibernate-release-version>6.5.2.Final</hibernate-release-version>-->
+        <postgresql-release-version>42.7.3</postgresql-release-version>
     </properties>
 
     <dependencies>
@@ -24,9 +26,41 @@
         </dependency>
 
         <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.25.0-GA</version>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-spring</artifactId>
+            <version>${tapestry-release-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-hibernate</artifactId>
+            <version>${tapestry-release-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql-release-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-release-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring-release-version}</version>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -38,7 +72,7 @@
     </dependencies>
 
     <build>
-        <finalName>Tap22</finalName>
+        <finalName>ems</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -51,7 +85,7 @@
                     </systemProperties>
                     <scan>0</scan>
                     <webApp>
-                        <contextPath>/app</contextPath>
+                        <contextPath>/ems</contextPath>
                     </webApp>
                 </configuration>
             </plugin>

@@ -1,7 +1,13 @@
 package org.entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int empId;
     private String name;
     private int age;

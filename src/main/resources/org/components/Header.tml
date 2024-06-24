@@ -1,20 +1,7 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
-<head>
-    <title>${title}</title>
-    <style>
-.header{
- padding: 10px;
+<div style="padding: 10px;
  background-color:brown;
  color: white;
-        }
- </style>
-<!--    <style type="text/css">-->
-<!--        <t:delegate to="style"/>-->
-<!--    </style>-->
-<!--</head>-->
-
-<body>
-<div class="header">
+ ">
     <div style="width:60%; float:left">
         <h1>${companyName}</h1>
         <h2>${companyAddress}</h2>
@@ -24,8 +11,3 @@
         <h3>${emailId}</h3>
     </div>
 </div>
-
-<!--<t:body/>-->
-
-</body>
-</html>
