@@ -57,10 +57,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
        }
        catch(Exception e){
            tx.rollback();
-           System.out.println(e.getMessage());
-       }
-       finally {
-           session.close();
+          e.printStackTrace();
        }
     }
 

@@ -1,7 +1,7 @@
 package org.kane.services.impl;
 
 import org.kane.dao.EmployeeDao;
-import org.kane.dao.RoleDao;
+//import org.kane.dao.RoleDao;
 import org.kane.dao.impl.EmployeeDaoImpl;
 import org.kane.entities.Employee;
 import org.kane.entities.Role;
@@ -23,8 +23,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDaoImpl employeeDao;
 
-    @Autowired
-    private RoleDao roleDao;
+//    @Autowired
+//    private RoleDao roleDao;
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -67,10 +67,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
-    @Override
-    public List<Role> getAllRoles() {
-        return roleDao.findAllRoles();
-    }
+//    @Override
+//    public List<Role> getAllRoles() {
+//        return roleDao.findAllRoles();
+//    }
 }
 
 

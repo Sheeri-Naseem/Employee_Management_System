@@ -65,16 +65,22 @@
                 <p><strong>ID </strong></p>
             </div>
             <div class="item">
-                <p><strong>Name </strong></p>
+                <p><strong>User Name </strong></p>
+            </div>
+            <div class="item">
+                <p><strong>Email ID </strong></p>
             </div>
             <div class="item">
                 <p><strong>Age </strong></p>
             </div>
             <div class="item">
+                <p><strong>Contact No. </strong></p>
+            </div>
+            <div class="item">
                 <p><strong>Address </strong></p>
             </div>
             <div class="item">
-                <p><strong>Password </strong></p>
+                <p><strong>Roles </strong></p>
             </div>
         </t:if>
     </div>
@@ -85,23 +91,29 @@
                 <p>${employee.empId}</p>
             </div>
             <div class="item">
-                <p>${employee.name}</p>
+                <p>${employee.uname}</p>
+            </div>
+            <div class="item">
+                <p>${employee.email}</p>
             </div>
             <div class="item">
                 <p>${employee.age}</p>
             </div>
             <div class="item">
-                <p>${employee.address}</p>
+                <p>${employee.phone}</p>
             </div>
             <div class="item">
-                <p>${employee.password}</p>
+                <p>${fullAddress}</p>
+            </div>
+            <div class="item">
+                <p>${employeeRoles}</p>
             </div>
         </t:if>
     </div>
 
 </div>
 <div class="previous">
-    <p><t:pagelink page="EmployeesList">&lt;&lt; Click Here </t:pagelink> to go back to employees list!</p>
+    <p><t:pagelink t:page="EmployeesList">&lt;&lt; Click Here </t:pagelink> to go back to employees list!</p>
 </div>
 </body>
 </html>

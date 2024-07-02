@@ -156,19 +156,19 @@ public class AddEmployee {
 //    }
 
     private List<Role> getRoles() {
-//        List<Role> roles = new ArrayList<>();
-//        roles.add(new Role(1,"Manager"));
-//        roles.add(new Role(2, "Junior Developer"));
-//        roles.add(new Role(3, "Senior Developer"));
-//        roles.add(new Role(4, "Staff Engineer"));
-//        roles.add(new Role(5, "Software Consultant"));
-//        roles.add(new Role(6,  "Trainee"));
-//        roles.add(new Role(7,"HR"));
-//    return roles;
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role(1,"Manager"));
+        roles.add(new Role(2, "Junior Developer"));
+        roles.add(new Role(3, "Senior Developer"));
+        roles.add(new Role(4, "Staff Engineer"));
+        roles.add(new Role(5, "Software Consultant"));
+        roles.add(new Role(6,  "Trainee"));
+        roles.add(new Role(7,"HR"));
+    return roles;
 
-        List<Role> roles = employeeService.getAllRoles();
-        System.out.println("fetched roles from DB : "+roles);
-        return roles;
+//        List<Role> roles = employeeService.getAllRoles();
+//        System.out.println("fetched roles from DB : "+roles);
+//        return roles;
 }
 
     public void onPrepareFromAddEmployeeForm(){

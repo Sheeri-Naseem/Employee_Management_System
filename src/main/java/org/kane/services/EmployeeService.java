@@ -16,5 +16,5 @@ public interface EmployeeService {
 
     void deleteEmployeeById(int empId) ;
 
-    List<Role> getAllRoles();
+//    List<Role> getAllRoles();
 }

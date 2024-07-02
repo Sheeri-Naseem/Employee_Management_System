@@ -11,13 +11,13 @@ import java.util.List;
 public class EmployeesList {
 
     @Property
-    Employee employee;
+    private Employee employee;
 
     @Property
-    List<Employee> employeesList ;
+    private List<Employee> employeesList ;
 
     @Inject
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     void setupRender() {
        this.employeesList = employeeService.getAllEmployees();
