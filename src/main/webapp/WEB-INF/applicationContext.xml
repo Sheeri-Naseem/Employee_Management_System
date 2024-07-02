@@ -10,7 +10,7 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd">
 
-     <context:component-scan base-package="org"/>
+     <context:component-scan base-package="org.kane"/>
 
     <tx:annotation-driven proxy-target-class="true"
                           transaction-manager="transactionManager"/>
@@ -35,39 +35,37 @@
     <!-- Database DataSource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName"
-                  value="org.postgresql.Driver"/>
-<!--                  value="${jdbc.driverClassName}" />-->
+                  value="${jdbc.driverClassName}" />
         <property name="url"
-                  value="jdbc:postgresql://localhost:5432/ems" />
-<!--                  value="${jdbc.url}"/>-->
-        <property name="username" value="postgres"/>
-<!--                  value="${jdbc.username}" />-->
+                  value="${jdbc.url}"/>
+        <property name="username"
+                  value="${jdbc.username}" />
+
         <property name="password"
-                  value="KaneDb@29"/>
-<!--                  value="${jdbc.password}"/>-->
+                  value="${jdbc.password}"/>
     </bean>
 
-<!--    -->
-<!--    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-<!--        &lt;!&ndash;  Hard code the defaults here, but allow properties file to override &ndash;&gt;-->
-<!--        <property name="properties">-->
-<!--            <props>-->
-<!--                <prop key="jdbc.c3p0.maxPoolSize">10</prop>-->
-<!--                <prop key="jdbc.c3p0.minPoolSize">2</prop>-->
-<!--                <prop key="jdbc.c3p0.idleConnectionTestPeriod">600000</prop> &lt;!&ndash; 10min in millis &ndash;&gt;-->
-<!--                <prop key="jdbc.c3p0.initialPoolSize">1</prop>-->
-<!--                <prop key="jdbc.c3p0.acquireIncrement">1</prop>-->
-<!--                <prop key="jdbc.c3p0.acquireRetryAttempts">1</prop>-->
-<!--                <prop key="jdbc.c3p0.automaticTestTable">c3p0_test</prop>-->
-<!--            </props>-->
-<!--        </property>-->
-<!--        <property name="locations">-->
-<!--            <list>-->
-<!--                <value>classpath:jdbc.properties</value>-->
-<!--            </list>-->
-<!--        </property>-->
-<!--        <property name="ignoreUnresolvablePlaceholders" value="true"/>-->
-<!--    </bean>-->
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!--  Hard code the defaults here, but allow properties file to override -->
+        <property name="properties">
+            <props>
+                <prop key="jdbc.c3p0.maxPoolSize">10</prop>
+                <prop key="jdbc.c3p0.minPoolSize">2</prop>
+                <prop key="jdbc.c3p0.idleConnectionTestPeriod">600000</prop> <!-- 10min in millis -->
+                <prop key="jdbc.c3p0.initialPoolSize">1</prop>
+                <prop key="jdbc.c3p0.acquireIncrement">1</prop>
+                <prop key="jdbc.c3p0.acquireRetryAttempts">1</prop>
+                <prop key="jdbc.c3p0.automaticTestTable">c3p0_test</prop>
+            </props>
+        </property>
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
 
 
 

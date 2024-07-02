@@ -29,7 +29,9 @@
         </property>
 
     <!-- ANNOTATED ENTITY CLASS -->
-        <mapping class="org.entities.Employee"/>
+        <mapping class="org.kane.entities.Employee"/>
+        <mapping class="org.kane.entities.Address"/>
+        <mapping class="org.kane.entities.Role"/>
 
     </session-factory>
 </hibernate-configuration>

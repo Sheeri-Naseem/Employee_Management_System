@@ -11,7 +11,7 @@
         of where to look for pages, components and mixins.
         -->
         <param-name>tapestry.app-package</param-name>
-        <param-value>org</param-value>
+        <param-value>org.kane</param-value>
     </context-param>
 
     <context-param>
@@ -24,7 +24,7 @@
 <!--    <context-param>-->
 <!--        <param-name>tapestry.development-modules</param-name>-->
 <!--        <param-value>-->
-<!--            org.services.AppModule-->
+<!--            services.kane.AppModule-->
 <!--        </param-value>-->
 <!--    </context-param>-->
 
