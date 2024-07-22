@@ -1,0 +1,204 @@
+EXCEPTION STACK:
+
+
+  Exception: org.apache.tapestry5.ioc.internal.OperationException
+    Message: 
+      trace: Handling traditional 'promotetomanager' component event request for EmployeesList.
+
+  Exception: org.eclipse.jetty.io.EofException
+    Message: 
+
+  Stack trace:
+
+  - org.eclipse.jetty.server.HttpConnection$SendCallback.reset(HttpConnection.java:731)
+  - org.eclipse.jetty.server.HttpConnection.send(HttpConnection.java:582)
+  - org.eclipse.jetty.server.HttpChannel.sendResponse(HttpChannel.java:970)
+  - org.eclipse.jetty.server.HttpChannel.write(HttpChannel.java:1047)
+  - org.eclipse.jetty.server.HttpOutput.channelWrite(HttpOutput.java:269)
+  - org.eclipse.jetty.server.HttpOutput.close(HttpOutput.java:622)
+  - org.eclipse.jetty.server.Response.closeOutput(Response.java:959)
+  - org.eclipse.jetty.server.Response.sendRedirect(Response.java:593)
+  - org.eclipse.jetty.server.Response.sendRedirect(Response.java:524)
+  - org.eclipse.jetty.server.Response.sendRedirect(Response.java:599)
+  - javax.servlet.http.HttpServletResponseWrapper.sendRedirect(HttpServletResponseWrapper.java:130)
+  - org.apache.tapestry5.http.internal.services.ResponseImpl.sendRedirect(ResponseImpl.java:72)
+  - org.apache.tapestry5.http.internal.services.ResponseImpl.sendRedirect(ResponseImpl.java:80)
+  - $Response_821871716ac3e.sendRedirect(Unknown Source)
+  - $Response_821871716ab4b.sendRedirect(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$21.processResultValue(TapestryModule.java:1619)
+  - org.apache.tapestry5.modules.TapestryModule$21.processResultValue(TapestryModule.java:1616)
+  - $ComponentEventResultProcessor_821871716acd9.processResultValue(Unknown Source)
+  - $ComponentEventResultProcessor_821871716abb3.processResultValue(Unknown Source)
+  - org.apache.tapestry5.internal.services.PageNameComponentEventResultProcessor.processResultValue(PageNameComponentEventResultProcessor.java:46)
+  - org.apache.tapestry5.internal.services.PageNameComponentEventResultProcessor.processResultValue(PageNameComponentEventResultProcessor.java:28)
+  - $ComponentEventResultProcessor_821871716acd9.processResultValue(Unknown Source)
+  - $ComponentEventResultProcessor_821871716abb3.processResultValue(Unknown Source)
+  - org.apache.tapestry5.internal.services.ComponentEventRequestHandlerImpl.handle(ComponentEventRequestHandlerImpl.java:101)
+  - org.apache.tapestry5.internal.services.AjaxFilter.handle(AjaxFilter.java:47)
+  - $ComponentEventRequestHandler_821871716abb6.handle(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$36.handle(TapestryModule.java:2283)
+  - $ComponentEventRequestHandler_821871716abb6.handle(Unknown Source)
+  - $ComponentEventRequestHandler_821871716abae.handle(Unknown Source)
+  - org.apache.tapestry5.internal.services.ComponentRequestHandlerTerminator.handleComponentEvent(ComponentRequestHandlerTerminator.java:49)
+  - org.apache.tapestry5.internal.services.DeferredResponseRenderer.handleComponentEvent(DeferredResponseRenderer.java:50)
+  - $ComponentRequestHandler_821871716abb0.handleComponentEvent(Unknown Source)
+  - org.apache.tapestry5.services.InitializeActivePageName.handleComponentEvent(InitializeActivePageName.java:41)
+  - $ComponentRequestHandler_821871716abb0.handleComponentEvent(Unknown Source)
+  - org.apache.tapestry5.internal.services.RequestOperationTracker$1.perform(RequestOperationTracker.java:60)
+  - org.apache.tapestry5.internal.services.RequestOperationTracker$1.perform(RequestOperationTracker.java:57)
+  - org.apache.tapestry5.ioc.internal.OperationTrackerImpl.perform(OperationTrackerImpl.java:110)
+  - org.apache.tapestry5.ioc.internal.PerThreadOperationTracker.perform(PerThreadOperationTracker.java:84)
+  - org.apache.tapestry5.ioc.internal.RegistryImpl.perform(RegistryImpl.java:1298)
+  - org.apache.tapestry5.internal.services.RequestOperationTracker.handleComponentEvent(RequestOperationTracker.java:52)
+  - $ComponentRequestHandler_821871716abb0.handleComponentEvent(Unknown Source)
+  - $ComponentRequestHandler_821871716ab80.handleComponentEvent(Unknown Source)
+  - org.apache.tapestry5.internal.services.ComponentEventDispatcher.dispatch(ComponentEventDispatcher.java:54)
+  - $Dispatcher_821871716ab82.dispatch(Unknown Source)
+  - $Dispatcher_821871716ab77.dispatch(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$RequestHandlerTerminator.service(TapestryHttpModule.java:492)
+  - org.kane.services.AppModule$1.service(AppModule.java:111)
+  - $RequestFilter_821871716ab76.service(Unknown Source)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.RequestErrorFilter.service(RequestErrorFilter.java:31)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$2.service(TapestryModule.java:994)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - org.apache.tapestry5.modules.TapestryModule$1.service(TapestryModule.java:984)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.StaticFilesFilter.service(StaticFilesFilter.java:89)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter$2.invoke(CheckForUpdatesFilter.java:110)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter$2.invoke(CheckForUpdatesFilter.java:100)
+  - org.apache.tapestry5.ioc.internal.util.ConcurrentBarrier.withRead(ConcurrentBarrier.java:83)
+  - org.apache.tapestry5.internal.services.CheckForUpdatesFilter.service(CheckForUpdatesFilter.java:124)
+  - $RequestHandler_821871716ab78.service(Unknown Source)
+  - $RequestHandler_821871716ab6d.service(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$HttpServletRequestHandlerTerminator.service(TapestryHttpModule.java:469)
+  - org.apache.tapestry5.internal.services.IgnoredPathsFilter.service(IgnoredPathsFilter.java:69)
+  - $HttpServletRequestFilter_821871716ab6c.service(Unknown Source)
+  - $HttpServletRequestHandler_821871716ab6f.service(Unknown Source)
+  - org.apache.tapestry5.http.internal.gzip.GZipFilter.service(GZipFilter.java:60)
+  - $HttpServletRequestHandler_821871716ab6f.service(Unknown Source)
+  - org.apache.tapestry5.http.modules.TapestryHttpModule$2.service(TapestryHttpModule.java:318)
+  - $HttpServletRequestHandler_821871716ab6f.service(Unknown Source)
+  - $HttpServletRequestHandler_821871716ab67.service(Unknown Source)
+  - org.apache.tapestry5.http.TapestryFilter.runFilter(TapestryFilter.java:178)
+  - org.apache.tapestry5.http.TapestryFilter.doFilter(TapestryFilter.java:225)
+  - org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:210)
+  - org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1594)
+  - org.eclipse.jetty.websocket.servlet.WebSocketUpgradeFilter.doFilter(WebSocketUpgradeFilter.java:164)
+  - org.eclipse.jetty.servlet.FilterHolder.doFilter(FilterHolder.java:202)
+  - org.eclipse.jetty.servlet.ServletHandler$Chain.doFilter(ServletHandler.java:1594)
+  - org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:506)
+  - org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:131)
+  - org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:578)
+  - org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122)
+  - org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:223)
+  - org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1571)
+  - org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221)
+  - org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1378)
+  - org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176)
+  - org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:463)
+  - org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1544)
+  - org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174)
+  - org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1300)
+  - org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129)
+  - org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:149)
+  - org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:51)
+  - org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122)
+  - org.eclipse.jetty.server.Server.handle(Server.java:562)
+  - org.eclipse.jetty.server.HttpChannel.lambda$handle$0(HttpChannel.java:418)
+  - org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:675)
+  - org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:410)
+  - org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:282)
+  - org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:319)
+  - org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100)
+  - org.eclipse.jetty.io.SocketChannelEndPoint$1.run(SocketChannelEndPoint.java:101)
+  - org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.runTask(AdaptiveExecutionStrategy.java:412)
+  - org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.consumeTask(AdaptiveExecutionStrategy.java:381)
+  - org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.tryProduce(AdaptiveExecutionStrategy.java:268)
+  - org.eclipse.jetty.util.thread.strategy.AdaptiveExecutionStrategy.lambda$new$0(AdaptiveExecutionStrategy.java:138)
+  - org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:407)
+  - org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:894)
+  - org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1038)
+  - java.base/java.lang.Thread.run(Thread.java:840)
+
+REQUEST:
+
+Basic Information:
+
+                contextPath: /ems
+                      flags: requestedSessionIdValid
+                     method: GET
+                       path: /employeeslist:promotetomanager/1
+                     locale: en_US
+                 serverName: localhost
+                 remoteHost: 
+
+Headers:
+
+                     Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: en-US,en;q=0.9
+                 Connection: keep-alive
+                     Cookie: JSESSIONID=node0157lozvriil21xbzwetheityp1.node0
+                       Host: localhost:8080
+                    Referer: http://localhost:8080/ems/employeeslist
+             Sec-Fetch-Dest: document
+             Sec-Fetch-Mode: navigate
+             Sec-Fetch-Site: same-origin
+             Sec-Fetch-User: ?1
+  Upgrade-Insecure-Requests: 1
+                 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+                  sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+           sec-ch-ua-mobile: ?0
+         sec-ch-ua-platform: "Windows"
+
+SESSION:
+
+             sso:org.apache.tapestry5.alerts.AlertStorage: org.apache.tapestry5.alerts.AlertStorage@185360be
+                           sso:org.kane.entities.Employee: Employee{empId=5, uname='Ankit Mishra', email='ankit@gmail.com', gender=M, age=29, dateOfBirth=1985-07-20, phone='7895486231', password='mishra', address=org.kane.entities.Address@de3f672, role=Role{id=1, roleName='Admin', permissions=[Permission{id=24, permission_type='view_all'}, Permission{id=25, permission_type='edit_all'}, Permission{id=26, permission_type='delete_all'}]}}
+  state:EmployeesList:employeegrid:defaultPaginationModel: GridPaginationModelImpl[currentPage=null, sortColumnId=null, sortAscending=null]
+
+SYSTEM INFORMATION:
+
+Memory:
+      343,540,936 bytes free
+      530,579,456 bytes total
+    4,198,498,304 bytes max
+
+34 Threads:
+                            Reference Handler RUNNABLE, daemon, priority 10
+                                    Finalizer WAITING, daemon, priority 8
+                            Signal Dispatcher RUNNABLE, daemon, priority 9
+                              Attach Listener RUNNABLE, daemon
+                          Notification Thread RUNNABLE, daemon, priority 9
+                               SIGINT handler WAITING, daemon, priority 9
+                                         main WAITING
+*                            qtp1137940831-29 RUNNABLE
+                             qtp1137940831-30 TIMED_WAITING
+                             qtp1137940831-31 TIMED_WAITING
+                             qtp1137940831-32 TIMED_WAITING
+                             qtp1137940831-33 TIMED_WAITING
+                             qtp1137940831-34 TIMED_WAITING
+                             qtp1137940831-35 TIMED_WAITING
+                             qtp1137940831-36 TIMED_WAITING
+                             qtp1137940831-37 TIMED_WAITING
+                             qtp1137940831-38 TIMED_WAITING
+                             qtp1137940831-39 TIMED_WAITING
+                             qtp1137940831-40 TIMED_WAITING
+                             qtp1137940831-41 TIMED_WAITING
+                             qtp1137940831-42 TIMED_WAITING
+                             qtp1137940831-43 TIMED_WAITING
+                             qtp1137940831-44 TIMED_WAITING
+                             qtp1137940831-45 TIMED_WAITING
+                             qtp1137940831-46 TIMED_WAITING
+                             qtp1137940831-47 TIMED_WAITING
+                             qtp1137940831-48 TIMED_WAITING
+                             qtp1137940831-49 TIMED_WAITING
+                      PostgreSQL-JDBC-Cleaner TIMED_WAITING, daemon
+                    Tapestry PeriodicExecutor TIMED_WAITING
+  Hibernate Connection Pool Validation Thread TIMED_WAITING, daemon
+                 Session-Scheduler-58a8ea6f-1 TIMED_WAITING
+                          JettyShutdownThread TIMED_WAITING
+                               Common-Cleaner TIMED_WAITING, daemon, priority 8

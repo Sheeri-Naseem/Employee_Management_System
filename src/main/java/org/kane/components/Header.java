@@ -1,9 +1,9 @@
 package org.kane.components;
 
 import org.apache.tapestry5.BindingConstants;
-import org.apache.tapestry5.Block;
-import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Property;
+
+import org.apache.tapestry5.annotations.*;
+import org.kane.entities.Employee;
 
 public class Header {
 
@@ -12,22 +12,21 @@ public class Header {
     private String title;
 
     @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private Block style;
+    private String companyName = " KANE SOLUTIONS ";
 
     @Property
-    private final String companyName = " KANE SOLUTIONS ";
-
-    @Property
-    private final String companyAddress = "Central Business Centre\n" +
+    private String companyAddress = "Central Business Centre\n" +
             "Mdina Road\n" +
             "Zebbug ZBG 9015\n" +
             "Malta ";
 
     @Property
-    private final String phoneNo = "+356 2247 1900";
+    private String phoneNo = "+356 2247 1900";
 
     @Property
-    private final String emailId = "maltaoffice@kanesolutions.com";
+    private String emailId = "maltaoffice@kanesolutions.com";
 
+    @SessionState
+    private Employee loggedInEmployee;
 }
+

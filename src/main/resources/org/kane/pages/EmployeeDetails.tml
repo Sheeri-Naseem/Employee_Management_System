@@ -1,64 +1,77 @@
-<html title="Employee Details | EMS"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-<head>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+
+<t:header title="Employee Details | EMS"/>
+
+<body class="container-fluid">
+
 <style>
-
     .employee-container{
-
-     display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            border: 2px solid #ccc;
-            padding: 20px;
-            border-radius: 7px;
-            max-width: 1000px;
-            margin: auto;
-            box-sizing: border-box;
-             box-shadow: 5px 10px #888888;
-            margin-top: 50px;
-
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 2px solid #ccc;
+      padding: 20px;
+      border-radius: 7px;
+      max-width: 1000px;
+      margin: auto;
+      box-sizing: border-box;
+      box-shadow: 5px 10px #888888;
+      margin-top: 50px;
     }
-.headings{
-    flex:1;
+   .headings{
+      flex:1;
    }
-
-.details{
-   flex:1;
-  }
-
-
-    .item{
-  margin-bottom: 15px;
-            text-align: left;
-            font-size: 16px;
+   .details{
+      flex:1;
+   }
+   .item{
+      margin-bottom: 15px;
+      text-align: left;
+      font-size: 16px;
     }
-
-      a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-       a:hover {
-            text-decoration: underline;
-        }
-
+    a{
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
     .previous{
- position: absolute;
-            top: 10px;
-            left: 10px;
-            margin: 0;
-            font-size: 10px;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        margin: 40px 0 11px 0px ;
+        font-size: 10px;
     }
 
 </style>
-</head>
-<body class="container" style="background-color:#CF978B;">
-<div>
+<hr/>
+<div style="margin:30px">
     <h1><i>Employee details</i></h1>
 </div>
+<hr/>
+<div style="float:right">
+    <div class="btn btn-light ms-4">
+        <t:if test = "isLoggedIn()">
+            <t:pagelink page="Index" t:id="logoutLink">[ CLOSE ]</t:pagelink>
+        </t:if>
+    </div>
+</div>
+<t:if test = "hasEditPermission()">
+<div style="float:right; color: black; font-weight: bolder; width: 10%; padding: 4px" class="btn btn-light btn-md">
+
+        <t:pagelink type="button" page="EditEmployee" context="employee.empId">
+            Edit
+        </t:pagelink>
+
+</div>
+</t:if>
+
+
+
 <div class="employee-container">
+
     <div class="headings">
         <t:if test="employee">
             <div class="item">
@@ -71,7 +84,7 @@
                 <p><strong>Email ID </strong></p>
             </div>
             <div class="item">
-                <p><strong>Age </strong></p>
+                <p><strong>Date Of Birth </strong></p>
             </div>
             <div class="item">
                 <p><strong>Contact No. </strong></p>
@@ -80,7 +93,7 @@
                 <p><strong>Address </strong></p>
             </div>
             <div class="item">
-                <p><strong>Roles </strong></p>
+                <p><strong>Role </strong></p>
             </div>
         </t:if>
     </div>
@@ -97,7 +110,7 @@
                 <p>${employee.email}</p>
             </div>
             <div class="item">
-                <p>${employee.age}</p>
+                <p>${employee.dateOfBirth}</p>
             </div>
             <div class="item">
                 <p>${employee.phone}</p>
@@ -106,12 +119,17 @@
                 <p>${fullAddress}</p>
             </div>
             <div class="item">
-                <p>${employeeRoles}</p>
+                <p>${employeeRole}</p>
             </div>
         </t:if>
     </div>
 
 </div>
+
+<t:if test="isBirthday()">
+    <t:EmpBday gender="employee.gender" name="employee.uname"/>
+</t:if>
+
 <div class="previous">
     <p><t:pagelink t:page="EmployeesList">&lt;&lt; Click Here </t:pagelink> to go back to employees list!</p>
 </div>

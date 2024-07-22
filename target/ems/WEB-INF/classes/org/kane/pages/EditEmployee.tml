@@ -1,0 +1,158 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+<t:header title="Edit Employee | EMS"/>
+
+<body class="container-fluid">
+
+<style>
+    .employee-container{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          border: 2px solid #ccc;
+          padding: 20px;
+          border-radius: 7px;
+          max-width: 1000px;
+          margin: auto;
+          box-sizing: border-box;
+          box-shadow: 5px 10px #888888;
+          margin-top: 50px;
+          margin-bottom: 50px;
+      }
+
+    .details{
+        flex:1;
+        width: 80%;
+        align-content: center;
+    }
+
+    .item{
+         margin-bottom: 15px;
+         text-align: left;
+         font-size: 15px;
+    }
+
+     t:submit {
+            background-color: ##66c337;
+            color: white;
+             padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        t:submit:hover {
+            background-color: #377019;
+        }
+
+        h1{
+            text-align:center;
+            font-size: bold;
+            margin-top: 0;
+        }
+
+          .previous{
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            margin: 40px 0 11px 0px ;
+            font-size: 10px;
+        }
+
+</style>
+
+<hr/>
+<div style="float:right">
+    <div class="btn btn-light ms-4">
+        <t:if test = "isLoggedIn()">
+            <t:pagelink page="Index" t:id="logoutLink">[ CLOSE ]</t:pagelink>
+        </t:if>
+    </div>
+</div>
+<div style="margin:30px">
+    <h1><i>Edit Details </i></h1>
+</div>
+<hr/>
+
+<div class="employee-container">
+    <div class="details">
+        <t:form t:id="editEmployeeForm">
+
+            <div class="error">
+                <t:errors/>
+            </div>
+            <div id="ageError" class="text-danger" style="display: none;"></div>
+            <!--</t:if>-->
+            <div class="item form-group">
+                <label for="uname">User Name : </label>
+                <t:textfield t:id="uname" value="employee.uname"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="email">Email : </label>
+                <t:textfield t:id="email" t:type="email" value="employee.email"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="gender">Gender : </label>
+                <t:RadioGroup value="employee.gender">
+                    <t:Radio t:id="Male" value="literal:M" label="Male" type="radio" name="group"/><t:label for="Male"/><br/>
+                    <t:Radio t:id="Female" value="literal:F" label="Female" type="radio" name="group"/><t:label for="Female"/><br/>
+                </t:RadioGroup>
+            </div>
+
+            <div class="item form-group">
+                <label for="age">Age : </label>
+                <t:textfield t:id="Age" t:type="number" value="employee.age"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="dateOfBirth">Date Of Birth : </label>
+                <t:Datefield t:id="dateOfBirth" t:format="prop:dobFormatStr" value="employee.dateOfBirth"/>(${dobFormatStr})
+            </div>
+
+            <div class="item form-group">
+                <label for="address">Address : </label>
+                <t:textfield t:id="street" placeholder="Street" value="employee.address.street"/>
+                <t:textfield t:id="city" placeholder="City" value="employee.address.city"/>
+                <t:textfield t:id="state" placeholder="State" value="employee.address.state"/>
+                <t:textfield t:id="pinCode" placeholder="Pin Code" value="employee.address.pinCode"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="phone">Contact No. : </label>
+                <t:textfield t:id="phone" t:type="number" value="employee.phone"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="roles">Select Roles: </label>
+                <t:select t:id="role" t:model="roleModel" t:value="employee.role" t:encoder="encoder"/>
+            </div>
+
+            <div class="item form-group">
+                <label for="password">Password : </label>
+                <t:passwordfield t:id="Password" value="employee.password"/>
+            </div>
+            <div class="item form-group">
+                <label for="retypePassword">Re-type Password : </label>
+                <t:passwordfield t:id="retypePassword" value="retypePassword"/>
+            </div>
+
+            <div class="btn btn-success btn-lg">
+                <t:submit value="Update"/>
+            </div>
+
+        </t:form>
+    </div>
+</div>
+
+<div class="previous">
+    <p><t:pagelink t:page="EmployeesList">&lt;&lt; Click Here </t:pagelink> to go back to employees list!</p>
+</div>
+
+<script src="${context:/js/ageValidation.js}"></script>
+</body>
+
+</html>

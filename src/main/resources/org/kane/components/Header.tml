@@ -1,13 +1,60 @@
-<div style="padding: 10px;
- background-color:brown;
- color: white;
- ">
-    <div style="width:60%; float:left">
-        <h1>${companyName}</h1>
-        <h2>${companyAddress}</h2>
-    </div>
-    <div style="width:40%; float:right; text-align:right">
-        <h3>${phoneNo}</h3>
-        <h3>${emailId}</h3>
-    </div>
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+    <head>
+        <title>${title}</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+        <!-- Popper.js (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style>
+            body, html {
+               margin: 0;
+               padding: 0;
+               height: 100%;
+               width: 100%;
+           }
+           body{
+               background-color : #CF978B;
+               text-align: center;
+
+           }
+           .navbar {
+               margin: 0;
+               padding: 0;
+           }
+        </style>
+    </head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mt-0 pt-0" style="margin-top: auto; border: 2px solid black; ">
+<div class="container-fluid">
+    <span class="navbar-brand">${companyName}</span>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="d-flex">
+                <div class="navbar-text me-3">
+                    <h5>${companyAddress}</h5>
+                </div>
+                <div class="navbar-text me-3">
+                    <h5>${phoneNo}</h5>
+                </div>
+                <div class="navbar-text">
+                    <h5>${emailId}</h5>
+                </div>
 </div>
+
+        </div>
+</div>
+    </nav>
+
+
+</t:container>

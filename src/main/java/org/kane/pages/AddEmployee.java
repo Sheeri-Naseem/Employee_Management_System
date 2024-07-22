@@ -4,25 +4,24 @@ import org.apache.tapestry5.OptionGroupModel;
 import org.apache.tapestry5.OptionModel;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
-import org.apache.tapestry5.annotations.Persist;
+
+import org.apache.tapestry5.annotations.*;
+import org.apache.tapestry5.http.services.Request;
+import org.apache.tapestry5.http.services.Response;
 import org.apache.tapestry5.internal.OptionModelImpl;
-import org.apache.tapestry5.internal.services.StringValueEncoder;
+
 import org.apache.tapestry5.util.AbstractSelectModel;
 import org.kane.entities.Address;
 import org.kane.entities.Employee;
 import org.kane.entities.Role;
 import org.kane.services.EmployeeService;
-import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.InjectPage;
-import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
+
 import java.util.stream.Collectors;
 
 public class AddEmployee {
@@ -33,52 +32,12 @@ public class AddEmployee {
     @Property
     private Role role;
 
-//    @Property
-//    private Address address;
+    @Property
+    private Date dateOfBirth;
 
-//    @Property
-//    private List<Role> availableRoles;
-
-//    @Property
-//    private List<Role> selectedRoles ;
-
-
-// @Property
-//    @Validate("required")
-//    private int empid;
-
-//    @Property
-//    @Validate("required")
-//    private String uname;
-//
-//    @Property
-//    @Validate("required")
-//    private String email;
-//
-//    @Property
-//    @Validate("required")
-//    private int age;
-//
-////    address
-//    @Property
-//    @Validate("required")
-//    private String street;
-//
-//    @Property
-//    @Validate("required")
-//    private String city;
-//
-//    @Property
-//    @Validate("required")
-//    private String state;
-//
-//    @Property
-//    @Validate("required")
-//    private String pinCode;
-//
-//    @Property
-//    @Validate("required")
-//    private String phone;
+    @Property
+    // We could return a DateFormat, but instead we'll return a String which DateField will coerce into a DateFormat.
+    private String dobFormatStr = "dd/MM/yyyy";
 
     @Property
     @Validate("required")
@@ -97,7 +56,18 @@ public class AddEmployee {
     @InjectPage
     private EmployeesList employeesList;
 
+    @SessionState
+    private Employee loggedInEmployee;
+
+    @javax.inject.Inject
+    private Request request;
+
+    @javax.inject.Inject
+    private Response response;
+
     public ValueEncoder<Role> getEncoder(){
+        System.out.println("inside ValueEncoder() : \n");
+
         return new ValueEncoder<Role>() {
             @Override
             public String toClient(Role role) {
@@ -113,17 +83,19 @@ public class AddEmployee {
                         return availableRole;
                 }
                 return null;
-
-//                return getRoles().stream()
-//                        .filter(role -> Integer.parseInt(id) == role.getRoleId())
-//                        .findFirst()
-//                        .orElse(null);
             }
         };
     }
 
 
     public SelectModel getRoleModel(){
+System.out.println("inside getRoleModel() : \n");
+
+        List<Role> roles = getRoles();
+        if (roles == null) {
+            roles = List.of(); // Return an empty list if roles is null
+        }
+        List<Role> finalRoles = roles;
         return new AbstractSelectModel(){
 
             @Override
@@ -133,7 +105,7 @@ public class AddEmployee {
 
             @Override
             public List<OptionModel> getOptions() {
-                return getRoles()
+                return finalRoles
                         .stream()
                         .map(role -> new OptionModelImpl(role.getRoleName() , role))
                         .collect(Collectors.toUnmodifiableList());
@@ -141,52 +113,37 @@ public class AddEmployee {
         };
     }
 
-//    void setupRender() {
-//        employee = new Employee();
-//        address = new Address();
-//        employee.setAddress(address);
-//        availableRoles = getRoles();
-//        selectedRoles = new ArrayList<>();
-
-        //initializing all the roles as unselected
-//        for(int i=0; i < availableRoles.size(); i++){
-//            selectedRoles.add(false);
-//        }
-
-//    }
-
-    private List<Role> getRoles() {
-        List<Role> roles = new ArrayList<>();
-        roles.add(new Role(1,"Manager"));
-        roles.add(new Role(2, "Junior Developer"));
-        roles.add(new Role(3, "Senior Developer"));
-        roles.add(new Role(4, "Staff Engineer"));
-        roles.add(new Role(5, "Software Consultant"));
-        roles.add(new Role(6,  "Trainee"));
-        roles.add(new Role(7,"HR"));
-    return roles;
-
-//        List<Role> roles = employeeService.getAllRoles();
-//        System.out.println("fetched roles from DB : "+roles);
-//        return roles;
+    @Cached
+    public List<Role> getRoles() {
+        System.out.println("inside getRoles() : \n now calling employeeService.getAllRoles() : \n ");
+        List<Role> roles = employeeService.getAllRoles();
+        return roles;
 }
 
     public void onPrepareFromAddEmployeeForm(){
+        System.out.println("inside OnPrepare() : ");
+
         if(employee==null){
             employee = new Employee();
         }
-
+         System.out.println(employee);
         if(employee.getAddress()==null){
             employee.setAddress(new Address());
         }
+        System.out.println(employee);
+
     }
 
     void onValidateFromAddEmployeeForm() {
+        System.out.println("inside onValidate() : ");
+
         employee.setPassword(password);
         if (employee.getUname().isEmpty() || employee.getAge() == 0  ||  employee.getEmail().isEmpty() ||
                 employee.getAddress().getStreet().isEmpty() || employee.getAddress().getCity().isEmpty() ||
                 employee.getAddress().getState().isEmpty() || employee.getAddress().getPinCode().isEmpty() ||
-                employee.getPhone().isEmpty() || employee.getPassword().isEmpty() || retypePassword.isEmpty()) {
+                employee.getPhone().isEmpty() || employee.getRole().getRoleName().isEmpty() ||
+                employee.getGender().isEmpty() || employee.getDateOfBirth().toString().isEmpty() ||
+                employee.getPassword().isEmpty() || retypePassword.isEmpty()) {
             addEmployeeForm.recordError("All fields are required!");
         }
 
@@ -200,35 +157,14 @@ public class AddEmployee {
     }
 
     Object onSuccess() {
+        System.out.println("inside onSuccess() : ");
+
         employee.setPassword(password);
 
         System.out.println("Form submit successful! Entered data:");
-        System.out.println(employee.getUname()+ " "+ employee.getEmail() +" " + employee.getAge() + " " + employee.getAddress().getStreet()
-                + " " + employee.getAddress().getCity()+ " " + employee.getAddress().getState() + " " +
-                employee.getAddress().getPinCode() + " " + employee.getPhone() + " " + employee.getPassword());
-
-//        address = new Address(street, city, state, pinCode,employee);
-//        employee = new Employee(uname, age, address, password);
-
-
-
-//        for (Map.Entry<Integer, Boolean> entry : selectedRoles.entrySet()) {
-//            if (entry.getValue()) {
-//                roles.add(availableRoles.get(entry.getKey()));
-//            }
-//        }
-
-//        employee.setAddress(address);
-
-//        List<Role> roles = new ArrayList<>();
-
-//        for(int i=0; i<selectedRoles.size(); i++){
-//            if(selectedRoles.get(i)){
-//                roles.add(availableRoles.get(i));
-//            }
-//        }
-
-//        employee.setRoles(roles);
+        System.out.println(employee.getUname()+ " "+ employee.getEmail() +" " +employee.getGender()+ " " + employee.getAge() + " " +
+                employee.getDateOfBirth()+ " " + employee.getAddress().getStreet()+ " " + employee.getAddress().getCity()+ " " +
+                employee.getAddress().getState() + " " + employee.getAddress().getPinCode() + " " + employee.getPhone() + " " + employee.getPassword() );
 
         //call addEmp() service method
         employeeService.addEmp(employee);
@@ -237,4 +173,17 @@ public class AddEmployee {
         return employeesList;
     }
 
+    public boolean isLoggedIn(){
+        System.out.println(loggedInEmployee!=null);
+        return loggedInEmployee!=null;
+    }
+
+    void onActionFromLogoutLink() {
+        loggedInEmployee = null;
+        try {
+            response.sendRedirect(request.getContextPath() + "/index");
+        } catch (Exception e) {
+            throw new RuntimeException("Redirection failed");
+        }
+    }
 }

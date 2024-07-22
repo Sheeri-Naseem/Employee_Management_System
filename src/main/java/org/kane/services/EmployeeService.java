@@ -8,13 +8,19 @@ import java.util.List;
 public interface EmployeeService {
      Employee getEmployeeById(int empId);
 
-//     Employee getEmployeeByUserName(String username);
-
      List<Employee> getAllEmployees();
 
      void addEmp(Employee employee);
 
+     void updateEmployee(Employee employee);
+
     void deleteEmployeeById(int empId) ;
 
-//    List<Role> getAllRoles();
+    List<Role> getAllRoles();
+
+    boolean hasEditPerm(Employee e, String edit);
+
+    boolean hasDeletePerm(Employee e, String delete);
+
+    void promoteToManager(int employeeId);
 }

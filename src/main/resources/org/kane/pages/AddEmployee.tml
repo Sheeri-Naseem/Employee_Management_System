@@ -1,8 +1,10 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter"
-      title="Add Employee | EMS">
-<head>
-    <style>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+
+<t:header title="Add Employee | EMS"/>
+
+<body class="container-fluid">
+
+<style>
 .employee-container{
       display: flex;
       align-items: center;
@@ -16,6 +18,7 @@
       box-sizing: border-box;
       box-shadow: 5px 10px #888888;
       margin-top: 50px;
+      margin-bottom: 50px;
   }
 
 .details{
@@ -49,23 +52,33 @@
         margin-top: 0;
     }
 
+      .previous{
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        margin: 40px 0 11px 0px ;
+        font-size: 10px;
+    }
+
     </style>
-</head>
-<body class="container" style="background-color:#CF978B;">
 
-<!--<t:header/>-->
-
-<div>
-    <h1><i><strong>Add New Employee </strong> </i></h1>
+<hr/>
+<div style="float:right">
+    <div class="btn btn-light ms-4">
+        <t:if test = "isLoggedIn()">
+            <t:pagelink page="Index" t:id="logoutLink">[ CLOSE ]</t:pagelink>
+        </t:if>
+    </div>
 </div>
+<div style="margin:30px">
+    <h1><i>Add New Employee </i></h1>
+</div>
+<hr/>
 
 <div class="employee-container">
     <div class="details">
         <t:form t:id="addEmployeeForm">
-<!--            <div class="item form-group">-->
-<!--                <label for="empid">Employee ID : </label>-->
-<!--                <t:textfield t:id="employeeID" t:type="number" value="empId"/>-->
-<!--            </div>-->
+
             <div class="item form-group">
                 <label for="uname">User Name : </label>
                 <t:textfield t:id="uname" value="employee.uname"/>
@@ -77,17 +90,30 @@
             </div>
 
             <div class="item form-group">
+                <label for="gender">Gender : </label>
+                <t:RadioGroup value="employee.gender">
+                    <!-- We include type and name only to make it previewable. -->
+                    <t:Radio t:id="Male" value="literal:M" label="Male" type="radio" name="group"/><t:label for="Male"/><br/>
+                    <t:Radio t:id="Female" value="literal:F" label="Female" type="radio" name="group"/><t:label for="Female"/><br/>
+                 </t:RadioGroup>
+            </div>
+
+            <div class="item form-group">
+                <label for="dateOfBirth">Date Of Birth : </label>
+                <t:Datefield t:id="dateOfBirth" t:format="prop:dobFormatStr" value="employee.dateOfBirth"/>(${dobFormatStr})
+            </div>
+
+            <div class="item form-group">
                 <label for="age">Age : </label>
                 <t:textfield t:id="Age" t:type="number" value="employee.age"/>
             </div>
 
             <div class="item form-group">
                 <label for="address">Address : </label>
-<!--                <t:textfield t:id="Address" value="address"/>-->
-                <t:textfield t:id="street" value="employee.address.street"/>
-                <t:textfield t:id="city" value="employee.address.city"/>
-                <t:textfield t:id="state" value="employee.address.state"/>
-                <t:textfield t:id="pinCode" value="employee.address.pinCode"/>
+                <t:textfield t:id="street" placeholder="Street" value="employee.address.street"/>
+                <t:textfield t:id="city" placeholder="City" value="employee.address.city"/>
+                <t:textfield t:id="state" placeholder="State" value="employee.address.state"/>
+                <t:textfield t:id="pinCode" placeholder="Pin Code" value="employee.address.pinCode"/>
             </div>
 
             <div class="item form-group">
@@ -97,15 +123,7 @@
 
             <div class="item form-group">
                 <label for="roles">Select Roles: </label>
-<!--                <t:loop source="availableRoles" value="role">-->
-<!--                    <label>-->
-<!--                        <t:checkbox t:id="rolesCheckbox" value="selectedRoles[role]"/>-->
-<!--                        ${role.roleName}-->
-<!--                    </label>-->
-<!--                </t:loop>-->
-
-               <t:Checklist t:id="selectedRoles" t:model="roleModel" t:selected="employee.roles" t:encoder="encoder"/>
-
+                  <t:select t:id="role" t:model="roleModel" t:value="employee.role" t:encoder="encoder"/>
             </div>
 
             <div class="item form-group">
@@ -116,18 +134,21 @@
                 <label for="retypePassword">Re-type Password : </label>
                 <t:passwordfield t:id="retypePassword" value="retypePassword"/>
             </div>
-<!--<t:if test="hasErrors">-->
+
             <div class="error">
                 <t:errors />
             </div>
-<!--</t:if>-->
+
             <div class="btn btn-lg btn-block">
             <t:submit value="Add Employee"/>
             </div>
 
         </t:form>
     </div>
+</div>
 
+<div class="previous">
+    <p><t:pagelink t:page="EmployeesList">&lt;&lt; Click Here </t:pagelink> to go back to employees list!</p>
 </div>
 </body>
 

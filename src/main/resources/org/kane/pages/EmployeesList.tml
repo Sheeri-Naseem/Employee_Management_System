@@ -1,6 +1,10 @@
-<html title="List Of Employees | EMS"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
+
+<t:header title="List Of Employees | EMS"/>
+
+<body class="container-fluid">
+
 <style>
     .add-btn{
     padding: 1rem;
@@ -13,36 +17,148 @@
     cursor: pointer;
     }
     .add-emp{
-position: absolute;
+    position: absolute;
             bottom: 20px;
             right: 20px;
             margin: 0;
             font-size: 10px;
     }
+
+<!--    .modal-dialog {-->
+<!--        max-width: 600px;-->
+<!--        margin: 30px auto;-->
+<!--    }-->
+
+<!--    .modal-content {-->
+<!--        padding: 15px;-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+
+<!--    .modal-body img {-->
+<!--        max-width: 100%;-->
+<!--        height: auto;-->
+<!--    }-->
+
+<!--    /* Custom styles to prevent full-screen black background */-->
+<!--    .modal-backdrop {-->
+<!--        display: none;-->
+<!--    }-->
+
+<!--    .modal-open .modal {-->
+<!--        background: rgba(0, 0, 0, 0.5);-->
+<!--    }-->
 </style>
-<body class="container" style="text-align:center; background-color:#CF978B">
 
-<t:if test="employeesList">
+<t:if test="employees">
+    <hr/>
+
+    <div style="float:right">
+        <div class="btn btn-light ms-4">
+          <t:if test = "isLoggedIn()">
+                 <t:pagelink page="Index" t:id="logoutLink">[ CLOSE ]</t:pagelink>
+          </t:if>
+        </div>
+    </div>
+
+<div style="margin:30px">
     <h1><i>List of Employees </i></h1>
-
-<t:grid t:id="employeeGrid" source="employeesList" row="employee" exclude="password" rowsPerPage="5" pagerPosition="top">
+</div>
+<hr/>
+<t:grid t:id="employeeGrid" source="employees" row="employee" exclude="password, imageFilename" add="actions" rowsPerPage="5" pagerPosition="top">
 
     <p:empIdCell>
         <t:pagelink page="EmployeeDetails" context="employee.empId">
             ${employee.empId}
         </t:pagelink>
     </p:empIdCell>
-    <!--        <p:name> ${employee.name} </p:name>-->
-<!--        <p:age> ${employee.age} </p:age>-->
-<!--        <p:address> ${employee.address}  </p:address>-->
+
+    <p:UserNameCell>
+        ${employee.uname}
+    </p:UserNameCell>
+
+    <p:RoleCell>
+        ${employee.role}
+    </p:RoleCell>
+
+    <p:EmailCell>
+        ${employee.email}
+    </p:EmailCell>
+
+    <p:ContactCell>
+        ${employee.phone}
+    </p:ContactCell>
+
+
+    <p:ActionsCell>
+        <button type="button" class="btn btn-light btn-md" data-toggle="modal" data-target="#imageModal">
+        <t:actionlink t:id="imageLink" context="employee.empId" >
+            [ Image ]
+        </t:actionlink>
+        </button>
+
+        <t:if test = "hasEditPermission()">
+            <button type="button" class="btn btn-light btn-md">
+             <t:pagelink page="EditEmployee" context="employee.empId">
+          [ Edit ]
+       </t:pagelink>
+            </button>
+        </t:if>
+
+        <t:if test = "hasDeletePermission()">
+            <button type="button" class="btn btn-light btn-md">
+            <t:eventlink t:event="deleteEmployee" context="employee.empId">
+           [ Delete ]
+        </t:eventlink>
+            </button>
+        </t:if>
+
+        <t:if test = "hasEditPermission()">
+            <button type="button" class="btn btn-light btn-md">
+                <t:eventlink t:event="promoteToManager" context="employee.empId">
+              [ Promote to Manager ]
+            </t:eventlink>
+            </button>
+        </t:if>
+
+    </p:ActionsCell>
+
 
 </t:grid>
+
+    <t:if test = "hasCreatePermission()">
+    <div class="add-emp">
+        <t:pagelink page="AddEmployee" class="btn btn-outline-primary add-btn">Add Employee</t:pagelink>
+    </div>
+    </t:if>
+
+<p:else>
+    <h1><strong>No Employees Record Found! </strong> </h1>
+        <hr/>
+        <h2>Click on <t:pagelink page="AddEmployee" class="btn btn-primary add-btn">Add Employee</t:pagelink> to add an employee. </h2>
+</p:else>
+
 </t:if>
 
-<div class="add-emp">
-
-    <t:pagelink page="AddEmployee" class="btn btn-primary add-btn">Add Employee</t:pagelink>
-
+<!-- Image Popup Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Employee Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="employeeImage" src="" alt="Employee Image" class="img-fluid"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script  src="${context:/js/imageDisplay.js}"></script>
 </body>
 </html>

@@ -1,8 +1,15 @@
 org\kane\entities\Address.class
 org\kane\pages\AddEmployee.class
+org\kane\components\EmpBday.class
+org\kane\entities\Permission.class
+org\kane\dao\impl\PermissionDaoImpl.class
 org\kane\services\impl\LoginServiceImpl.class
 org\kane\services\EmployeeService.class
+org\kane\components\WishBanner.class
 org\kane\pages\EmployeesList.class
+org\kane\pages\EditEmployee.class
+org\kane\pages\EditEmployee$1.class
+org\kane\dao\RoleDao.class
 org\kane\pages\AddEmployee$1.class
 org\kane\services\LoginService.class
 org\kane\entities\Role.class
@@ -12,7 +19,11 @@ org\kane\pages\EmployeeDetails.class
 org\kane\pages\AddEmployee$2.class
 org\kane\services\AppModule.class
 org\kane\dao\EmployeeDao.class
+org\kane\pages\EditEmployee$2.class
 org\kane\services\impl\EmployeeServiceImpl.class
+org\kane\pages\EmployeeImagePage.class
+org\kane\dao\PermissionDao.class
 org\kane\pages\Index.class
+org\kane\dao\impl\RoleDaoImpl.class
 org\kane\entities\Employee.class
 org\kane\components\Header.class

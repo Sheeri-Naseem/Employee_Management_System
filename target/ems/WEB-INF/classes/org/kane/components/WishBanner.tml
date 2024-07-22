@@ -1,0 +1,5 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+    <div style="background-color:${getBannerColor()}; padding:30px; margin: 30px; width:30%; height: 20%; border: 2px solid black; border-radius: 10px; font-size: 20px">
+        <h4><i>${getMessage()}</i></h4>
+    </div>
+</t:container>

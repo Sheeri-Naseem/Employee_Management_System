@@ -1,9 +1,9 @@
-<html title="Login | Employee Management System"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-<!--        t:type="header"-->
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
 
-<!--<p:style>-->
+<t:header title="Login | EMS"/>
+
+<body class="container-fluid">
+
 <style>
   .login-container {
   width: 50%;
@@ -72,26 +72,21 @@
 .reset-button:hover {
     background-color: #C02C0D;
 }
-<!--</p:style>-->
 </style>
 
-<!--<div t:id="header"/>-->
-
-<body class="container" style="text-align:center; background-color:#CF978B">
-
-<!--<div class="container" style="text-align:center">-->
-  <h1>Employee Management System</h1>
-<br/>
+<hr/>
+<div style="margin:30px">
+<h1><i>Employee Management System</i></h1>
+</div>
+    <hr/>
     <div class="login-container" style="border: 1px solid black;">
         <h3><i>Login Here ! </i></h3>
         <t:form t:id="loginForm" style="margin-left: auto; margin-right:auto">
             <div class="form-group">
-<!--                <t:label for="username">Username</t:label>-->
                 <t:textfield t:id="username" t:mixins="formgroup"/>
             </div>
 
             <div class="form-group">
-<!--                <t:label for="password">Password</t:label>-->
                 <t:passwordfield t:id="password" t:mixins="formgroup"/>
             </div>
 

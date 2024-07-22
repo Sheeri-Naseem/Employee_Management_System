@@ -1,0 +1,5 @@
+<container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+<t:page title="Employee Image">
+    <img src="${imageUrl}" alt="Employee Image" class="img-fluid"/>
+</t:page>
+</container>

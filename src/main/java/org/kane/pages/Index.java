@@ -1,18 +1,19 @@
 package org.kane.pages;
 
+import org.apache.tapestry5.annotations.*;
+import org.apache.tapestry5.http.services.Request;
+import org.apache.tapestry5.http.services.Response;
+import org.hibernate.Session;
+import org.kane.components.Header;
 import org.kane.entities.Employee;
 import org.kane.services.LoginService;
 import org.apache.tapestry5.alerts.AlertManager;
 //import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.alerts.Duration;
 import org.apache.tapestry5.alerts.Severity;
-import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.InjectPage;
-import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.PasswordField;
-//import components.kane.Header;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 
@@ -44,10 +45,14 @@ public class Index {
     @InjectPage
     private EmployeesList employeesList;
 
+    @SessionState
+    private Employee loggedInEmployee;
 
-//    @Component
-//    private Header header;
+    @Inject
+    private Request request;
 
+    @Inject
+    private Response response;
 
     void onValidateFromLoginForm(){
 
@@ -57,12 +62,20 @@ public class Index {
         }
     }
 
-    Object onSuccess(){
+    void onSuccess(){
         System.out.println("Login Successful");
-        alertManager.success("Welcome back "+username + " !");
-        return employeesList;
-    }
+        Employee employee = loginService.findByUsernameAndPassword(username,password);
+        if(employee!=null){
 
+            loggedInEmployee = employee;
+            System.out.println("LOGGED IN USER SET AS : "+loggedInEmployee);
+            try {
+                response.sendRedirect(request.getContextPath() + "/employeeslist");
+            } catch (Exception e) {
+                throw new RuntimeException("Redirection failed");
+            }
+            alertManager.success("Welcome back "+username + " !");
+        }
 
-
+        }
 }

@@ -9,39 +9,39 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
-    private int roleId;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "role_name", nullable = false)
     private String roleName;
 
-    @ManyToMany(mappedBy = "roles")
-    private List<Employee> employees;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Permission> permissions;
 
     public Role() {
     }
 
     public Role(int roleId) {
-        this.roleId = roleId;
+        this.id = roleId;
     }
 
     public Role(int roleId, String roleName) {
-        this.roleId = roleId;
+        this.id = roleId;
         this.roleName = roleName;
     }
 
-    public Role(int roleId, String roleName, List<Employee> employees) {
-        this.roleId = roleId;
+    public Role(int id, String roleName, List<Permission> permissions) {
+        this.id = id;
         this.roleName = roleName;
-        this.employees = employees;
+        this.permissions = permissions;
     }
 
     public int getRoleId() {
-        return roleId;
+        return id;
     }
 
     public void setRoleId(int roleId) {
-        this.roleId = roleId;
+        this.id = roleId;
     }
 
     public String getRoleName() {
@@ -52,22 +52,21 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public List<Permission> getPermissions() {
+
+        return permissions;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
     }
 
     @Override
     public String toString() {
         return "Role{" +
-                "roleId=" + roleId +
+                "id=" + id +
                 ", roleName='" + roleName + '\'' +
-                ", employees=" + employees +
+                ", permissions=" + permissions +
                 '}';
     }
-
-
 }
